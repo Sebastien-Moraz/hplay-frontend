@@ -1,13 +1,50 @@
 /* this file defines the main css for the app */
 @import 'base.css';
 
+html {
+    height: 100%;
+}
+
 body {
+    min-height: 100%;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     line-height: 1.5;
     color: var(--color-text);
     background-color: var(--color-background);
     margin: 0;
-    padding: 0;
     overflow-x: hidden;
+    position: relative;
+    padding: 0 0 460px;
+}
+
+a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+a:hover {
+    color: var(--color-text);
+    text-decoration: underline;
+}
+
+a:visited {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-heading);
+    margin: 0;
+    font-weight: bold;
+}
+
+hr {
+    border: 0;
+    border-top: 2px solid var(--color-text);
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 800px;
+    }
 }

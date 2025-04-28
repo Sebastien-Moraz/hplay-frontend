@@ -38,6 +38,7 @@ const toggleMenu = () => {
   align-items: center;
   padding: 1rem;
   background-color: #1d1d1d;
+  height: 10hv;
 }
 
 .logo img {
@@ -70,6 +71,7 @@ const toggleMenu = () => {
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 1rem;
+  z-index: 1000;
 }
 
 .menu.open {
