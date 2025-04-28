@@ -1,0 +1,13 @@
+/* this file defines the main css for the app */
+@import 'base.css';
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
