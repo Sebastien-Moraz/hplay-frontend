@@ -26,7 +26,7 @@ library.add(faInstagram, faFacebook, faLinkedin, faWhatsapp);
         <p>Copyright © 2025 HStudio - Jordan Hertig</p>
       </div>
       <RouterLink to="/">
-        <img src="../assets/LogoHPlayNB.png" alt="Logo" class="logo" />
+        <img src="../assets/logoHPlayNB.png" alt="Logo" class="logo" />
       </RouterLink>
     </div>
   </footer>
@@ -35,7 +35,7 @@ library.add(faInstagram, faFacebook, faLinkedin, faWhatsapp);
 <style scoped>
 footer {
   width: 100%;
-  background-color: #ff0000;
+  background-color: #EA0029;
   color: white;
   padding: 2rem 0;
   position: absolute;
