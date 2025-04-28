@@ -39,6 +39,11 @@ const toggleMenu = () => {
   padding: 1rem;
   background-color: #1d1d1d;
   height: 10hv;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .logo img {
