@@ -57,6 +57,7 @@ for (let i = 0; i < 2; i++) {
 }
 
 .video-player {
+	margin-top: 68px;
 	width: 100%;
 	aspect-ratio: 16 / 9;
 	border-radius: 8px;
@@ -66,19 +67,16 @@ for (let i = 0; i < 2; i++) {
 .video-info {
 	padding: 10px;
 	border-radius: 8px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .video-title {
 	font-size: 2em;
 	font-weight: bold;
-	color: var(--color-heading);
 	margin-bottom: 10px;
 }
 
 .video-description {
 	font-size: 1.2em;
-	color: var(--color-text);
 	line-height: 1.6;
 }
 
@@ -90,13 +88,46 @@ for (let i = 0; i < 2; i++) {
 }
 
 .recommendations-title {
-	margin-left: 17%;
+	text-align: center;
+	color: white;
 }
 
-.recommendations h2 {
-	font-size: 1.5em;
-	font-weight: bold;
-	color: var(--color-heading);
-	margin-bottom: 10px;
+/* Tablet and mobile responsiveness */
+@media (max-width: 1024px) {
+	.media-view {
+		flex-direction: column;
+	}
+
+	.recommendations {
+		width: 100%;
+	}
+}
+
+@media (max-width: 768px) {
+	.media-view {
+		padding: 10px;
+	}
+
+	.video-title {
+		font-size: 1.5em;
+	}
+
+	.video-description {
+		font-size: 1em;
+	}
+
+	.recommendations-title {
+		font-size: 1.2em;
+	}
+}
+
+@media (max-width: 480px) {
+	.video-info {
+		padding: 5px;
+	}
+
+	.video-title {
+		font-size: 1.2em;
+	}
 }
 </style>
