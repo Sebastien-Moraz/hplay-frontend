@@ -5,27 +5,34 @@ import MediaCartList from '@/components/MediaCartList.vue';
 
 const cartItems = ref([]);
 
+// Load cart items from the CartService
 const loadCart = () => {
 	cartItems.value = CartService.getCart();
 };
 
+// Remove all items from the cart
 const clearCart = () => {
 	CartService.clearCart();
 	cartItems.value = [];
 };
 
+// Calculate the total price of items in the cart
 const getTotal = () => {
 	return cartItems.value.reduce((total, item) => total + item.price, 0).toFixed(2);
 };
 
+// Handle item removal from the cart
 const handleItemRemoved = (id) => {
 	cartItems.value = cartItems.value.filter((item) => item.id !== id);
 };
 
+// Proceed to checkout
 const checkout = () => {
+	//TODO: Implement checkout logic and remove alert
 	alert('Procéder au paiement');
 };
 
+// Load cart items when the component is mounted
 onMounted(() => {
 	loadCart();
 });
