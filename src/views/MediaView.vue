@@ -20,7 +20,7 @@ const media = ref( new Media(
 		"2023",
 	]
 ));
-const isInCart = ref(false);
+const isInCart = ref(CartService.isInCart(media.value.id));
 const checkIfInCart = () => {
 	isInCart.value = CartService.isInCart(media.value.id);
 };
@@ -42,7 +42,12 @@ const removeFromCart = () => {
 			<h2 class="media-title">{{ media.name }}</h2>
 			<p class="media-description">{{ media.description }}</p>
 			<button class="button-store" @click="addToCart" v-if="!isInCart">
-				{{ media.price }} CHF Panier
+				<p v-if="media.price > 0">
+					{{ media.price }} CHF Panier
+				</p>
+				<p v-else>
+					Gratuit
+				</p>
 			</button>
 			<button class="button-store" v-else @click="removeFromCart">
 				Retirer du panier
