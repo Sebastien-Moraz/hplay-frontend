@@ -11,8 +11,10 @@ const props = defineProps({
 	},
 });
 
+// Check if the media is already in the cart
 const isInCart = ref(CartService.isInCart(props.media.id));
 
+// Watch for changes in the cart
 const addToCart = () => {
 	CartService.addMedia(props.media);
 	isInCart.value = true;
