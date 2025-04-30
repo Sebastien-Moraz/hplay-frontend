@@ -25,7 +25,7 @@ const fetchMedia = async () => {
 				"Ceci est la description de la vidéo de demonstration",
 				10.95,
 				"https://mfc.koppa.pro/img/hero/hero-1.jpg",
-				["2025", "test", "demo"]
+				["2025", "test", "demo", "2022", "2023"]
 		);
 		tmp.push(media);
 	}

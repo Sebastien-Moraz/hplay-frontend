@@ -1,6 +1,7 @@
 <script setup>
 import Media from "@/libs/Media.js";
 import BuyButton from "@/components/BuyButton.vue";
+import TagList from "@/components/TagList.vue";
 
 defineProps({
 	media: {
@@ -30,12 +31,7 @@ const descriptionLimit = 50;
 				<p class="video-description">{{ truncate(media.description, descriptionLimit) }}</p>
 				<p v-if="media.price > 0" class="video-price">{{ media.price }} CHF</p>
 				<p v-else class="video-price">Gratuit</p>
-				<div class="video-tags">
-        <span v-for="(tag, index) in media.tags.slice(0, tagsLimit)" :key="tag" class="video-tag">
-          {{ tag }}
-        </span>
-					<span v-if="media.tags.length > tagsLimit" class="video-tag">...</span>
-				</div>
+				<TagList :tags="media.tags" :tagsLimit="tagsLimit" />
 			</div>
 			<div class="buy-button">
 				<BuyButton :media="media" @click="handleBuyButtonClick"/>
@@ -87,21 +83,6 @@ const descriptionLimit = 50;
 	font-size: 16px;
 	font-weight: bold;
 	margin: 0 0 8px;
-}
-
-.video-tags {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px;
-}
-
-.video-tag {
-	background-color: #f0f0f0;
-	border-radius: 4px;
-	padding: 4px 8px;
-	font-size: 12px;
-	color: #333;
-	font-weight: bold;
 }
 
 .buy-button {

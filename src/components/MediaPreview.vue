@@ -1,6 +1,7 @@
 <script setup>
 import Media from "@/libs/Media.js";
 import BuyButton from "@/components/BuyButton.vue";
+import TagList from "@/components/TagList.vue";
 
 defineProps({
 	media: {
@@ -18,15 +19,7 @@ defineProps({
 			<h2 class="media-title">{{ media.name }}</h2>
 			<p class="media-description">{{ media.description }}</p>
 			<BuyButton :media="media" />
-			<div class="media-tags">
-				<span
-						v-for="(tag, index) in media.tags"
-						:key="tag"
-						class="media-tag"
-				>
-					{{ tag }}
-				</span>
-			</div>
+			<TagList :tags="media.tags" />
 		</div>
 	</div>
 </template>
