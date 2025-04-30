@@ -12,7 +12,7 @@ library.add(faInstagram, faFacebook, faLinkedin, faWhatsapp);
 			<div>
 				<h2>Adresse</h2>
 				<hr>
-				<p>Rue des Rasses 16</p>
+				<p>Rue du Stand 4</p>
 				<p>1450 Sainte-Croix</p>
 				<h2>Contact</h2>
 				<hr>
