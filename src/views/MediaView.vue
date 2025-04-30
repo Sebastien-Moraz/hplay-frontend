@@ -1,5 +1,5 @@
 <script setup>
-
+import {ref, onMounted} from "vue";
 import MediaPreview from "@/components/MediaPreview.vue";
 import Media from "@/libs/Media.js";
 import {useRoute} from "vue-router";
@@ -35,7 +35,7 @@ onMounted(() => {
 
 <template>
 	<div class="media-view">
-		<MediaPreview :media="media" />
+		<MediaPreview v-if="media" :media="media" />
 	</div>
 </template>
 
