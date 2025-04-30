@@ -66,6 +66,7 @@ button {
 
 button:hover {
     background-color: #d70027;
+    transform: scale(1.05);
 }
 
 button:active {

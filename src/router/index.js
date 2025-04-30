@@ -2,10 +2,18 @@ import {createRouter, createWebHistory} from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import StoreView from '../views/StoreView.vue'
 import CartView from '../views/CartView.vue'
+import MediaPlayerView from '../views/MediaPlayerView.vue'
 import MediaView from '../views/MediaView.vue'
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
+	scrollBehavior(to, from, savedPosition) {
+		if (savedPosition) {
+			return savedPosition
+		} else {
+			return {top: 0}
+		}
+	},
 	routes: [
 		{
 			path: '/',
@@ -20,12 +28,12 @@ const router = createRouter({
 		{
 			path: '/store/:id',
 			name: 'store-item',
-			component: HomeView,
+			component: MediaView,
 		},
 		{
 			path: '/media/:id',
 			name: 'media',
-			component: MediaView,
+			component: MediaPlayerView,
 		},
 		{
 			path: '/cart',

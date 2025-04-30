@@ -23,7 +23,8 @@ const descriptionLimit = 50;
 			<div class="video-info">
 				<h2 class="video-title">{{ truncate(media.name, titleLimit) }}</h2>
 				<p class="video-description">{{ truncate(media.description, descriptionLimit) }}</p>
-				<p class="video-price">{{ media.price }} CHF</p>
+				<p v-if="media.price > 0" class="video-price">{{ media.price }} CHF</p>
+				<p v-else class="video-price">Gratuit</p>
 				<div class="video-tags">
      <span
 				 v-for="(tag, index) in media.tags.slice(0, tagsLimit)"

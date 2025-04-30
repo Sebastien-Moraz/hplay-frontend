@@ -85,7 +85,7 @@ footer > .content > div {
 	gap: 0.7rem;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
 	.content {
 		flex-direction: column; /* Stack elements vertically */
 		align-items: center;
