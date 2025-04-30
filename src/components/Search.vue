@@ -9,13 +9,17 @@ const selectedTags = ref([]);
 const tags = ref([]);
 const isLoading = ref(false);
 
+// Fetch tags from the API
 const fetchTags = async () => {
 	tags.value = ["2025", "test", "test différent", "2022", "2023"];
 	tags.value.sort((a, b) => a.localeCompare(b));
 };
 
-const fetchMedia = async () => {
+// Fetch medias from the API
+const fetchMedias = async () => {
+	// display loading message
 	isLoading.value = true;
+	
 	let tmp = [];
 	
 	for (let i = 0; i < 20; i++) {
@@ -29,11 +33,17 @@ const fetchMedia = async () => {
 		);
 		tmp.push(media);
 	}
+	
+	//TODO: remove this after implementing the API
 	await new Promise((resolve) => setTimeout(resolve, 1000));
+	
+	// mask loading message
 	isLoading.value = false;
+	
 	return tmp;
 };
 
+// Filter medias based on search query and selected tags
 const toggleTag = (tag) => {
 	const index = selectedTags.value.indexOf(tag);
 	if (index === -1) {
@@ -44,15 +54,18 @@ const toggleTag = (tag) => {
 	emitMedia();
 };
 
+// Update the list of medias based on the search query and selected tags
 const emitMedia = async () => {
-	const medias = await fetchMedia();
+	const medias = await fetchMedias();
 	emit("update:medias", medias); // Utilisation de emit
 };
 
+// Handle search input
 const handleSearch = () => {
 	emitMedia();
 };
 
+// Watch for changes in search query and selected tags
 onMounted(() => {
 	fetchTags();
 	emitMedia();
