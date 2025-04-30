@@ -13,7 +13,7 @@ defineProps({
 
 <template>
 	<div class="media-list">
-		<MediaCard v-for="media in medias" :key="media.id" :media="media" />
+		<MediaCard class="media-card" v-for="media in medias" :key="media.id" :media="media" />
 	</div>
 </template>
 
@@ -21,7 +21,8 @@ defineProps({
 .media-list {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 16px;
 	justify-content: center;
+	gap: 20px;
+	padding: 20px;
 }
 </style>
