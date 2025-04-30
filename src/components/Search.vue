@@ -17,15 +17,16 @@ const fetchTags = async () => {
 const fetchMedia = async () => {
 	isLoading.value = true;
 	let tmp = [];
-	let media = new Media(
-			1,
-			"Video demo",
-			"Ceci est la description de la vidéo de demonstration",
-			10.95,
-			"https://mfc.koppa.pro/img/hero/hero-1.jpg",
-			["2025", "test", "demo"]
-	);
+	
 	for (let i = 0; i < 20; i++) {
+		let media = new Media(
+				i,
+				"Video demo",
+				"Ceci est la description de la vidéo de demonstration",
+				10.95,
+				"https://mfc.koppa.pro/img/hero/hero-1.jpg",
+				["2025", "test", "demo"]
+		);
 		tmp.push(media);
 	}
 	await new Promise((resolve) => setTimeout(resolve, 1000));

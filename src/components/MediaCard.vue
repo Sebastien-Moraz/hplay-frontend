@@ -36,6 +36,7 @@ const descriptionLimit = 50;
 					<span v-if="media.tags.length > tagsLimit" class="video-tag">...</span>
 				</div>
 			</div>
+			
 		</div>
 	</RouterLink>
 </template>

@@ -31,6 +31,15 @@ defineProps({
 				{{ media.description }}
 			</p>
 		</div>
+		<div class="video-tags">
+			<span
+					v-for="(tag, index) in media.tags"
+					:key="tag"
+					class="video-tag"
+			>
+				{{ tag }}
+			</span>
+		</div>
 	</div>
 </template>
 
@@ -63,6 +72,21 @@ defineProps({
 .video-description {
 	font-size: 1.2em;
 	line-height: 1.6;
+}
+
+.video-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+	margin-top: 10px;
+}
+
+.video-tag {
+	background-color: #EA0029;
+	color: white;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-size: 1em;
 }
 
 @media (max-width: 480px) {

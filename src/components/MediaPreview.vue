@@ -1,27 +1,14 @@
 <script setup>
-import CartService from '@/services/CartService';
-import { ref } from 'vue';
 import Media from "@/libs/Media.js";
+import BuyButton from "@/components/BuyButton.vue";
 
-const props = defineProps({
+defineProps({
 	media: {
 		type: Media,
 		required: true,
 		validator: (value) => value instanceof Media,
 	},
 });
-console.log(props.media);
-const isInCart = ref(CartService.isInCart(props.media.id));
-
-const addToCart = () => {
-	CartService.addMedia(props.media);
-	isInCart.value = true;
-};
-
-const removeFromCart = () => {
-	CartService.removeMedia(props.media.id);
-	isInCart.value = false;
-};
 </script>
 
 <template>
@@ -30,17 +17,7 @@ const removeFromCart = () => {
 		<div class="media-info">
 			<h2 class="media-title">{{ media.name }}</h2>
 			<p class="media-description">{{ media.description }}</p>
-			<button class="button-store" @click="addToCart" v-if="!isInCart">
-				<p v-if="media.price > 0">
-					{{ media.price }} CHF Panier
-				</p>
-				<p v-else>
-					Gratuit
-				</p>
-			</button>
-			<button class="button-store" v-else @click="removeFromCart">
-				Retirer du panier
-			</button>
+			<BuyButton :media="media" />
 			<div class="media-tags">
 				<span
 						v-for="(tag, index) in media.tags"
@@ -91,18 +68,16 @@ const removeFromCart = () => {
 .media-tags {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 10px;
+	gap: 5px;
+	margin-top: 10px;
 }
 
 .media-tag {
-	background-color: #1d1d1d;
+	background-color: #EA0029;
 	color: white;
-	padding: 0 8px;
-	border-radius: 20px;
-	cursor: pointer;
-	border: 2px solid #EA0029;
-	transition: all 0.3s ease;
-	font-size: 16px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-size: 1em;
 }
 
 @media (max-width: 768px) {
