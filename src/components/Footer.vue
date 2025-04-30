@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faInstagram, faFacebook, faLinkedin, faWhatsapp} from '@fortawesome/free-brands-svg-icons';
 
+// Import icon from FontAwesome
 library.add(faInstagram, faFacebook, faLinkedin, faWhatsapp);
 </script>
 
