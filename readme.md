@@ -43,7 +43,6 @@ npm run build
 └───src
     ├───assets
     ├───components
-    │   └───icons
     ├───libs
     ├───router
     ├───services
