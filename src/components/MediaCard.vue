@@ -10,13 +10,17 @@ defineProps({
 	},
 });
 
+// Cancel RouterLink navigation on buy button click
 const handleBuyButtonClick = (event) => {
 	event.preventDefault();
 };
 
+// Limit title and description length
 const truncate = (text, maxLength) => {
 	return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
 };
+
+// Define chars limits for tags, title, and description
 const tagsLimit = 4;
 const titleLimit = 20;
 const descriptionLimit = 50;
