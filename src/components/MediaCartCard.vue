@@ -10,11 +10,11 @@ const props = defineProps({
 	},
 });
 
-const emit = defineEmits(['item-removed']); // Declare the event
+const emit = defineEmits(['item-removed']);
 
 const removeFromCart = () => {
 	CartService.removeMedia(props.item.id);
-	emit('item-removed', props.item.id); // Emit the event
+	emit('item-removed', props.item.id);
 };
 </script>
 
