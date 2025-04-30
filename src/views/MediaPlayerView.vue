@@ -22,7 +22,7 @@ for (let i = 0; i < 2; i++) {
 		<div class="video-section">
 			<iframe
 					class="video-player"
-					src="https://player.vod2.infomaniak.com/embed/1jijk03u2imb6?token=st=1745849566~exp=1745938680~acl=/_hls_/1jijk03u2im16/1jhvl2uqfrkau/*~hmac=658ec59edd27cd0b422039deb8ffb0801ab930a7163e6d13ffad2aeaa30c1d22"
+					src="https://player.vod2.infomaniak.com/embed/1jijk03u2imb6?token=st=1746000032~exp=1756479480~acl=/_hls_/1jijk03u2im16/1jhvl2uqfrkau/*~hmac=ea9c08764c3c293a8ff549832495579b1437efcf33829d7ad48a8d78a21d90f9"
 					title="Video player"
 					frameborder="0"
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -57,7 +57,6 @@ for (let i = 0; i < 2; i++) {
 }
 
 .video-player {
-	margin-top: 68px;
 	width: 100%;
 	aspect-ratio: 16 / 9;
 	border-radius: 8px;

@@ -75,7 +75,6 @@ onMounted(() => {
 }
 
 .clear-button, .checkout-button {
-	background-color: #ff4444;
 	width: auto;
 	height: auto;
 	margin-left: 10px;
