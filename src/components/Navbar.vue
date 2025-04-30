@@ -1,12 +1,27 @@
 <script setup>
 import {RouterLink} from 'vue-router'
-import {ref} from 'vue'
+import {onMounted, ref} from 'vue'
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import {library} from "@fortawesome/fontawesome-svg-core";
+import {faBars} from "@fortawesome/free-solid-svg-icons";
+
+library.add(faBars);
 
 const isMenuOpen = ref(false)
 
-const toggleMenu = () => {
-	isMenuOpen.value = !isMenuOpen.value
+// Manage the burger menu state for mobile view
+const toggleMenu = (event) => {
+	if (event.target.closest('.burger-menu')) {
+		isMenuOpen.value = !isMenuOpen.value;
+	} else {
+		isMenuOpen.value = false;
+	}
 }
+
+// Close the menu when clicking outside the menu
+onMounted(() => {
+	document.addEventListener('click', toggleMenu)
+})
 </script>
 
 <template>
@@ -19,7 +34,7 @@ const toggleMenu = () => {
 		</div>
 
 		<!-- Burger Menu -->
-		<img src="@/assets/burgerMenu.svg" alt="Logo" class="burger-menu" @click="toggleMenu"/>
+		<FontAwesomeIcon class="burger-menu" icon="fa-solid fa-bars" />
 
 		<!-- Menu Links -->
 		<ul class="menu" :class="{ open: isMenuOpen }">
@@ -46,7 +61,6 @@ const toggleMenu = () => {
 	align-items: center;
 	padding: 1rem;
 	background-color: #1d1d1d;
-	height: 10hv;
 	position: fixed;
 	top: 0;
 	left: 0;

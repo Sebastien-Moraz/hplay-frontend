@@ -1,25 +1,40 @@
 <script setup>
 import Media from "@/libs/Media.js";
 import MediaList from "@/components/MediaList.vue";
-let media = new Media(
-	1, 
-	"Video demo",
-	"Ceci est la description de la vidéo de demonstration",
-	10.95, 
-	"https://mfc.koppa.pro/img/hero/hero-1.jpg",
-	[
-		"2025",
-		"test",
-		"test desastreux",
-		"2022",
-		"2023",
-	]
-);
+import { ref, onMounted } from "vue";
 
-let medias = [];
-for (let i = 0; i < 10; i++) {
-	medias.push(media);
-}
+let medias = ref([]);
+
+// Get the media list from the API
+const loadMedias = () => {
+	//TODO: remove this and replace with API call
+	let media = new Media(
+			1,
+			"Video demo",
+			"Ceci est la description de la vidéo de demonstration",
+			10.95,
+			"https://mfc.koppa.pro/img/hero/hero-1.jpg",
+			[
+				"2025",
+				"test",
+				"test desastreux",
+				"2022",
+				"2023",
+			]
+	);
+
+	let medias = [];
+	for (let i = 0; i < 10; i++) {
+		medias.push(media);
+	}
+	return medias;
+};
+
+// Load the media list when the component is mounted
+onMounted(() => {
+	medias.value = loadMedias();
+});
+
 </script>
 
 <template>

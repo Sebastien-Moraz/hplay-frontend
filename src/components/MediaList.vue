@@ -1,5 +1,5 @@
 <script setup>
-import MediaPreview from "@/components/MediaPreview.vue";
+import MediaCard from "@/components/MediaCard.vue";
 import Media from "@/libs/Media.js";
 
 defineProps({
@@ -13,7 +13,7 @@ defineProps({
 
 <template>
 	<div class="media-list">
-		<MediaPreview v-for="media in medias" :key="media.id" :media="media" />
+		<MediaCard class="media-card" v-for="media in medias" :key="media.id" :media="media" />
 	</div>
 </template>
 
@@ -21,7 +21,8 @@ defineProps({
 .media-list {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 16px;
 	justify-content: center;
+	gap: 20px;
+	padding: 20px;
 }
 </style>
