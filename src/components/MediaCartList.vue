@@ -9,6 +9,7 @@ const props = defineProps({
 	},
 });
 
+// Emit an event when an item is removed to the parent component
 const emit = defineEmits(['item-removed']);
 </script>
 
