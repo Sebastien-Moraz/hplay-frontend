@@ -1,5 +1,6 @@
 <script setup>
 import Media from "@/libs/Media.js";
+import BuyButton from "@/components/BuyButton.vue";
 
 defineProps({
 	media: {
@@ -7,6 +8,10 @@ defineProps({
 		required: true,
 	},
 });
+
+const handleBuyButtonClick = (event) => {
+	event.preventDefault();
+};
 
 const truncate = (text, maxLength) => {
 	return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
@@ -26,19 +31,18 @@ const descriptionLimit = 50;
 				<p v-if="media.price > 0" class="video-price">{{ media.price }} CHF</p>
 				<p v-else class="video-price">Gratuit</p>
 				<div class="video-tags">
-     <span
-				 v-for="(tag, index) in media.tags.slice(0, tagsLimit)"
-				 :key="tag"
-				 class="video-tag"
-		 >
-       {{ tag }}
-     </span>
+        <span v-for="(tag, index) in media.tags.slice(0, tagsLimit)" :key="tag" class="video-tag">
+          {{ tag }}
+        </span>
 					<span v-if="media.tags.length > tagsLimit" class="video-tag">...</span>
 				</div>
 			</div>
-			
+			<div class="buy-button">
+				<BuyButton :media="media" @click="handleBuyButtonClick"/>
+			</div>
 		</div>
 	</RouterLink>
+
 </template>
 
 <style scoped>
@@ -98,5 +102,13 @@ const descriptionLimit = 50;
 	font-size: 12px;
 	color: #333;
 	font-weight: bold;
+}
+
+.buy-button {
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 10px;
 }
 </style>
