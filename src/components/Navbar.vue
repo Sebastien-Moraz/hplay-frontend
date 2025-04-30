@@ -1,6 +1,11 @@
 <script setup>
 import {RouterLink} from 'vue-router'
 import {onMounted, ref} from 'vue'
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import {library} from "@fortawesome/fontawesome-svg-core";
+import {faBars} from "@fortawesome/free-solid-svg-icons";
+
+library.add(faBars);
 
 const isMenuOpen = ref(false)
 
@@ -27,7 +32,7 @@ onMounted(() => {
 		</div>
 
 		<!-- Burger Menu -->
-		<img src="@/assets/burgerMenu.svg" alt="Logo" class="burger-menu"/>
+		<FontAwesomeIcon class="burger-menu" icon="fa-solid fa-bars" />
 
 		<!-- Menu Links -->
 		<ul class="menu" :class="{ open: isMenuOpen }">
