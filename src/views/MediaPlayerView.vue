@@ -1,6 +1,7 @@
 <script setup>
 import MediaList from "@/components/MediaList.vue";
 import Media from "@/libs/Media.js";
+import MediaPlayer from "@/components/MediaPlayer.vue";
 
 let media = new Media(
 		1,
@@ -11,6 +12,8 @@ let media = new Media(
 		["2025", "test", "demo"]
 );
 
+let mediaToken = "token=st=1746000032~exp=1756479480~acl=/_hls_/1jijk03u2im16/1jhvl2uqfrkau/*~hmac=ea9c08764c3c293a8ff549832495579b1437efcf33829d7ad48a8d78a21d90f9";
+
 let recommendedMedias = [];
 for (let i = 0; i < 2; i++) {
 	recommendedMedias.push(media);
@@ -19,22 +22,7 @@ for (let i = 0; i < 2; i++) {
 
 <template>
 	<div class="media-view">
-		<div class="video-section">
-			<iframe
-					class="video-player"
-					src="https://player.vod2.infomaniak.com/embed/1jijk03u2imb6?token=st=1746000032~exp=1756479480~acl=/_hls_/1jijk03u2im16/1jhvl2uqfrkau/*~hmac=ea9c08764c3c293a8ff549832495579b1437efcf33829d7ad48a8d78a21d90f9"
-					title="Video player"
-					frameborder="0"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-					allowfullscreen
-			/>
-			<div class="video-info">
-				<h2 class="video-title">Video demo</h2>
-				<p class="video-description">
-					Ceci est la description de la vidéo de demonstration.
-				</p>
-			</div>
-		</div>
+		<MediaPlayer :media="media" :token="mediaToken" />
 		<div class="recommendations">
 			<h2 class="recommendations-title">Recommandations</h2>
 			<MediaList :medias="recommendedMedias" />
@@ -49,36 +37,6 @@ for (let i = 0; i < 2; i++) {
 	padding: 20px;
 }
 
-.video-section {
-	flex: 3;
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-}
-
-.video-player {
-	width: 100%;
-	aspect-ratio: 16 / 9;
-	border-radius: 8px;
-	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-}
-
-.video-info {
-	padding: 10px;
-	border-radius: 8px;
-}
-
-.video-title {
-	font-size: 2em;
-	font-weight: bold;
-	margin-bottom: 10px;
-}
-
-.video-description {
-	font-size: 1.2em;
-	line-height: 1.6;
-}
-
 .recommendations {
 	flex: 1;
 	display: flex;
@@ -91,7 +49,6 @@ for (let i = 0; i < 2; i++) {
 	color: white;
 }
 
-/* Tablet and mobile responsiveness */
 @media (max-width: 1024px) {
 	.media-view {
 		flex-direction: column;
@@ -107,25 +64,7 @@ for (let i = 0; i < 2; i++) {
 		padding: 10px;
 	}
 
-	.video-title {
-		font-size: 1.5em;
-	}
-
-	.video-description {
-		font-size: 1em;
-	}
-
 	.recommendations-title {
-		font-size: 1.2em;
-	}
-}
-
-@media (max-width: 480px) {
-	.video-info {
-		padding: 5px;
-	}
-
-	.video-title {
 		font-size: 1.2em;
 	}
 }
