@@ -13,10 +13,6 @@ const props = defineProps({
 console.log(props.media);
 const isInCart = ref(CartService.isInCart(props.media.id));
 
-const checkIfInCart = () => {
-	isInCart.value = CartService.isInCart(props.media.id);
-};
-
 const addToCart = () => {
 	CartService.addMedia(props.media);
 	isInCart.value = true;
