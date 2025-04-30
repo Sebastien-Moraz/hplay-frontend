@@ -9,6 +9,7 @@ library.add(faBars);
 
 const isMenuOpen = ref(false)
 
+// Manage the burger menu state for mobile view
 const toggleMenu = (event) => {
 	if (event.target.closest('.burger-menu')) {
 		isMenuOpen.value = !isMenuOpen.value;
@@ -17,6 +18,7 @@ const toggleMenu = (event) => {
 	}
 }
 
+// Close the menu when clicking outside the menu
 onMounted(() => {
 	document.addEventListener('click', toggleMenu)
 })
