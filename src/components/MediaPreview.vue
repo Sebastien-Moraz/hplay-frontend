@@ -58,21 +58,6 @@ defineProps({
 	margin: 0 0 8px;
 }
 
-.media-tags {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 5px;
-	margin-top: 10px;
-}
-
-.media-tag {
-	background-color: #EA0029;
-	color: white;
-	padding: 5px 10px;
-	border-radius: 5px;
-	font-size: 1em;
-}
-
 @media (max-width: 768px) {
 	.media-view {
 		flex-direction: column;
