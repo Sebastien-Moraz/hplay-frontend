@@ -39,10 +39,15 @@ npm run build
 
 ## Directory structure
 ```bash
-├───.dart_tool
-├───.idea
-│   ├───libraries
-│   └───runConfigurations
+├───public
+└───src
+    ├───assets
+    ├───components
+    │   └───icons
+    ├───libs
+    ├───router
+    ├───services
+    └───views
 ```
 ## Collaborate
 
