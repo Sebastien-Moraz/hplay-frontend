@@ -1,12 +1,20 @@
 <script setup>
 import {RouterLink} from 'vue-router'
-import {ref} from 'vue'
+import {onMounted, ref} from 'vue'
 
 const isMenuOpen = ref(false)
 
-const toggleMenu = () => {
-	isMenuOpen.value = !isMenuOpen.value
+const toggleMenu = (event) => {
+	if (event.target.closest('.burger-menu')) {
+		isMenuOpen.value = !isMenuOpen.value;
+	} else {
+		isMenuOpen.value = false;
+	}
 }
+
+onMounted(() => {
+	document.addEventListener('click', toggleMenu)
+})
 </script>
 
 <template>
@@ -19,7 +27,7 @@ const toggleMenu = () => {
 		</div>
 
 		<!-- Burger Menu -->
-		<img src="@/assets/burgerMenu.svg" alt="Logo" class="burger-menu" @click="toggleMenu"/>
+		<img src="@/assets/burgerMenu.svg" alt="Logo" class="burger-menu"/>
 
 		<!-- Menu Links -->
 		<ul class="menu" :class="{ open: isMenuOpen }">
@@ -46,7 +54,6 @@ const toggleMenu = () => {
 	align-items: center;
 	padding: 1rem;
 	background-color: #1d1d1d;
-	height: 10hv;
 	position: fixed;
 	top: 0;
 	left: 0;
