@@ -54,11 +54,14 @@ onMounted(() => {
 			<li>
 				<RouterLink to="/store">Magasin</RouterLink>
 			</li>
-			<li>
-				<RouterLink to="/cart">Panier</RouterLink>
+			<li v-if="isLoggedIn">
+				<RouterLink to="/my-media">Mes Médias</RouterLink>
 			</li>
 			<li>
 				<RouterLink to="/about">À propos</RouterLink>
+			</li>
+			<li>
+				<RouterLink to="/cart">Panier</RouterLink>
 			</li>
 			<li v-if="!isLoggedIn">
 				<RouterLink to="/login">Connexion</RouterLink>
@@ -117,6 +120,7 @@ onMounted(() => {
 	border-radius: 5px;
 	padding: 1rem;
 	z-index: 1000;
+	align-items: center;
 }
 
 .menu.open {
@@ -125,6 +129,7 @@ onMounted(() => {
 
 .menu li {
 	margin: 0.5rem 0;
+	text-align: center;
 }
 
 .menu a {

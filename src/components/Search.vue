@@ -9,6 +9,13 @@ const selectedTags = ref([]);
 const tags = ref([]);
 const isLoading = ref(false);
 
+defineProps({
+	isPosed: {
+		type: Boolean,
+		default: false,
+	},
+});
+
 // Fetch tags from the API
 const fetchTags = async () => {
 	tags.value = ["2025", "test", "test différent", "2022", "2023"];
@@ -20,6 +27,7 @@ const fetchMedias = async () => {
 	// display loading message
 	isLoading.value = true;
 	
+	//TODO: implement API call and use isPosed to filter the results
 	let tmp = [];
 	
 	for (let i = 0; i < 20; i++) {
