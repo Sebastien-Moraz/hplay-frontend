@@ -6,9 +6,12 @@ import Footer from "@/components/Footer.vue";
 
 <template>
 	<Navbar/>
-	<RouterView/>
+	<RouterView class="main"/>
 	<Footer/>
 </template>
 
 <style scoped>
+.main {
+	min-height: calc(100vh - 85px);
+}
 </style>

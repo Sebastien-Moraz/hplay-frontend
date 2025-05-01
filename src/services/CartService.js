@@ -23,12 +23,7 @@ export default class CartService {
 		const existingItem = cart.find(item => item.id === media.id);
 
 		if (!existingItem) {
-			cart.push({
-				id: media.id,
-				name: media.name,
-				price: media.price,
-				preview: media.preview,
-			});
+			cart.push(media);
 			localStorage.setItem(this.KEY, JSON.stringify(cart));
 		}
 		return cart;

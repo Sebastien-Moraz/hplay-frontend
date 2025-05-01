@@ -4,6 +4,9 @@ import StoreView from '../views/StoreView.vue'
 import CartView from '../views/CartView.vue'
 import MediaPlayerView from '../views/MediaPlayerView.vue'
 import MediaView from '../views/MediaView.vue'
+import LoginView from '../views/LoginView.vue'
+import RegisterView from '../views/RegisterView.vue'
+import ProfileView from '../views/ProfileView.vue'
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,16 +32,25 @@ const router = createRouter({
 			path: '/store/:id',
 			name: 'store-item',
 			component: MediaView,
+			meta: {
+				requiredAuth: true,
+			},
 		},
 		{
 			path: '/media/:id',
 			name: 'media',
 			component: MediaPlayerView,
+			meta: {
+				requiredAuth: true,
+			},
 		},
 		{
 			path: '/cart',
 			name: 'cart',
 			component: CartView,
+			meta: {
+				requiredAuth: true,
+			},
 		},
 		{
 			path: '/about',
@@ -47,7 +59,37 @@ const router = createRouter({
 				window.location.href = 'https://hstudio.ch';
 			},
 		},
+		{
+			path: '/login',
+			name: 'login',
+			component: LoginView,
+		},
+		{
+			path: '/register',
+			name: 'register',
+			component: RegisterView,
+		},
+		{
+			path: '/profile',
+			name: 'profile',
+			component: ProfileView,
+			meta: {
+				requiredAuth: true,
+			},
+		},
 	],
-})
+});
+
+// check if the user is logged in
+router.beforeEach((to, from, next) => {
+	const token = localStorage.getItem('jwtToken');
+	if (to.meta.requiredAuth && !token) {
+		console.log(to.fullPath);
+		localStorage.setItem('redirectUrl', to.fullPath);
+		next("/login");
+	} else {
+		next();
+	}
+});
 
 export default router

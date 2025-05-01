@@ -1,13 +1,23 @@
 <script setup>
 import {RouterLink} from 'vue-router'
-import {onMounted, ref} from 'vue'
+import {onMounted, ref, watchEffect} from 'vue'
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {faBars} from "@fortawesome/free-solid-svg-icons";
+import { isLoggedIn } from '@/stores/auth.js';
 
 library.add(faBars);
 
 const isMenuOpen = ref(false)
+const user = ref(null);
+
+watchEffect(() => {
+	if (isLoggedIn.value) {
+		user.value = JSON.parse(localStorage.getItem('user'));
+	} else {
+		user.value = null;
+	}
+})
 
 // Manage the burger menu state for mobile view
 const toggleMenu = (event) => {
@@ -49,6 +59,14 @@ onMounted(() => {
 			</li>
 			<li>
 				<RouterLink to="/about">À propos</RouterLink>
+			</li>
+			<li v-if="!isLoggedIn">
+				<RouterLink to="/login">Connexion</RouterLink>
+			</li>
+			<li v-else>
+				<RouterLink to="/profile">
+					{{ user.firstName }} {{ user.lastName }}
+				</RouterLink>
 			</li>
 		</ul>
 	</nav>
