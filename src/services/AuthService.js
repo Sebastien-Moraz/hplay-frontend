@@ -1,7 +1,6 @@
 import User from "@/libs/User.js";
 import { isLoggedIn } from "@/stores/auth.js";
 export default class AuthService {
-	token = localStorage.getItem('jwtToken');
 
 	/**
 	 * Register a new user
