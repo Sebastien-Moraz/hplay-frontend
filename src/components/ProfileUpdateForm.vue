@@ -22,8 +22,7 @@ const updateProfile = async () => {
 	if (password.value !== null && password.value !== confirmPassword.value) {
 		errorMessage.value = "Les mots de passe ne correspondent pas.";
 		return;
-	} else 
-		
+	}
 	try {
 		await AuthService.updateUser(props.user, password.value);
 		successMessage.value = "Profil mis à jour avec succès.";
