@@ -1,6 +1,5 @@
 <script setup>
 import Media from "@/libs/Media.js";
-import BuyButton from "@/components/BuyButton.vue";
 import TagList from "@/components/TagList.vue";
 
 defineProps({
@@ -8,12 +7,12 @@ defineProps({
 		type: Media,
 		required: true,
 	},
+	mediaType: {
+		type: String,
+		required: true,
+		default: "store",
+	},
 });
-
-// Cancel RouterLink navigation on buy button click
-const handleBuyButtonClick = (event) => {
-	event.preventDefault();
-};
 
 // Limit title and description length
 const truncate = (text, maxLength) => {
@@ -27,7 +26,7 @@ const descriptionLimit = 50;
 </script>
 
 <template>
-	<RouterLink :to="`/store/${media.id}`">
+	<RouterLink :to="`/${mediaType}/${media.id}`">
 		<div class="video-card" :key="media.id">
 			<img :src="media.preview" :alt="media.name" class="video-thumbnail" />
 			<div class="video-info">
@@ -36,9 +35,6 @@ const descriptionLimit = 50;
 				<p v-if="media.price > 0" class="video-price">{{ media.price }} CHF</p>
 				<p v-else class="video-price">Gratuit</p>
 				<TagList :tags="media.tags" :tagsLimit="tagsLimit" />
-			</div>
-			<div class="buy-button">
-				<BuyButton :media="media" @click="handleBuyButtonClick"/>
 			</div>
 		</div>
 	</RouterLink>
@@ -87,13 +83,5 @@ const descriptionLimit = 50;
 	font-size: 16px;
 	font-weight: bold;
 	margin: 0 0 8px;
-}
-
-.buy-button {
-	margin-top: 10px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 10px;
 }
 </style>

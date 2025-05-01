@@ -40,5 +40,17 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.media-view {
+	display: flex;
+	gap: 20px;
+	padding: 20px;
+	align-items: center;
+	text-align: center;
+}
 
+@media (max-width: 768px) {
+	.media-view {
+		flex-direction: column;
+	}
+}
 </style>
