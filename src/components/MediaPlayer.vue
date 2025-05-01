@@ -1,6 +1,7 @@
 <script setup>
 import Media from "@/libs/Media.js";
 import { defineProps } from "vue";
+import TagList from "@/components/TagList.vue";
 
 defineProps({
 	media: {
@@ -20,7 +21,6 @@ defineProps({
 		<iframe
 				class="video-player"
 				:src="`https://player.vod2.infomaniak.com/embed/1jijk03u2imb6?${token}`"
-				frameborder="0"
 				allow="autoplay; fullscreen; picture-in-picture"
 				allowfullscreen
 				
@@ -31,15 +31,7 @@ defineProps({
 				{{ media.description }}
 			</p>
 		</div>
-		<div class="video-tags">
-			<span
-					v-for="(tag, index) in media.tags"
-					:key="tag"
-					class="video-tag"
-			>
-				{{ tag }}
-			</span>
-		</div>
+		<TagList :tags="media.tags" />
 	</div>
 </template>
 
@@ -56,6 +48,7 @@ defineProps({
 	aspect-ratio: 16 / 9;
 	border-radius: 8px;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+	border: none;
 }
 
 .video-info {
