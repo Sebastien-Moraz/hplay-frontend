@@ -2,7 +2,7 @@
 import { defineProps, defineEmits } from 'vue';
 import MediaCartCard from './MediaCartCard.vue';
 
-const props = defineProps({
+defineProps({
 	items: {
 		type: Array,
 		required: true,
