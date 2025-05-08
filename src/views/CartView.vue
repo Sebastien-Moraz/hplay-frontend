@@ -18,7 +18,7 @@ const clearCart = () => {
 
 // Calculate the total price of items in the cart
 const getTotal = () => {
-	return cartItems.value.reduce((total, item) => total + item.price, 0).toFixed(2);
+	return (cartItems.value.reduce((total, item) => total + item.price, 0).toFixed(2)) / 100;
 };
 
 // Handle item removal from the cart
