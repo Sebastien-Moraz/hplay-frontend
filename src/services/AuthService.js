@@ -74,7 +74,6 @@ export default class AuthService {
 
 	static async updateUser(user, password = null) {
 		//TODO: implement update user logic with API
-		console.log('user', user);
 		localStorage.setItem('user', JSON.stringify(user));
 		//TODO: this force the navbar to re-render, but it should be done in a better way
 		isLoggedIn.value = false;

@@ -37,7 +37,6 @@ onMounted(async () => {
 	media.value = await loadMedia();
 	recommendedMedias.value = loadRecommendedMedias();
 	url.value = await loadMediaToken();
-	console.log(url.value);	
 });
 </script>
 

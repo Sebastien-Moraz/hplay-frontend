@@ -93,7 +93,6 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
 	const token = localStorage.getItem('jwtToken');
 	if (to.meta.requiredAuth && !token) {
-		console.log(to.fullPath);
 		localStorage.setItem('redirectUrl', to.fullPath);
 		next("/login");
 	} else {
