@@ -18,13 +18,13 @@ const loadMedia = async () => {
 }
 
 // Get the recommended media data by tags from the API
-const loadRecommendedMedias = () => {
+const loadRecommendedMedias = async () => {
 	//TODO: remove this and replace with API call
-	let recommendedMedias = [];
-	for (let i = 0; i < 2; i++) {
-		recommendedMedias.push(media.value);
-	}
-	return recommendedMedias;
+	const params = {
+		tags: media.value.tags,
+		limit: 2,
+	};
+	return await ApiService.searchMedias(params);
 }
 
 // Get the media token from the API
@@ -35,7 +35,7 @@ const loadMediaToken = async () => {
 // Load media, recommended media and token when the component is mounted
 onMounted(async () => {
 	media.value = await loadMedia();
-	recommendedMedias.value = loadRecommendedMedias();
+	recommendedMedias.value = await loadRecommendedMedias();
 	url.value = await loadMediaToken();
 });
 </script>
