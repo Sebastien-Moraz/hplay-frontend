@@ -1,6 +1,6 @@
 <script setup>
 import Media from "@/libs/Media.js";
-import { defineProps } from "vue";
+import {defineProps, ref} from "vue";
 import TagList from "@/components/TagList.vue";
 
 defineProps({
@@ -8,7 +8,7 @@ defineProps({
 		type: Media,
 		required: true,
 	},
-	token: {
+	url: {
 		type: String,
 		required: true,
 	},
@@ -19,8 +19,9 @@ defineProps({
 <template>
 	<div class="video-section">
 		<iframe
+				v-if="url"
 				class="video-player"
-				:src="`https://player.vod2.infomaniak.com/embed/1jijk03u2imb6?${token}`"
+				:src="`${url}`"
 				allow="autoplay; fullscreen; picture-in-picture"
 				allowfullscreen
 				
