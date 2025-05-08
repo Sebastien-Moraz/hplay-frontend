@@ -23,7 +23,7 @@ const removeFromCart = () => {
 		<img :src="item.preview" :alt="item.name" class="item-preview" />
 		<div class="item-info">
 			<h3>{{ item.name }}</h3>
-			<p>{{ item.price }} CHF</p>
+			<p>{{ item.price / 100 }} CHF</p>
 		</div>
 		<button @click="removeFromCart" class="remove-button">Supprimer</button>
 	</div>

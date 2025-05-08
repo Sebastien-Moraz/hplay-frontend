@@ -29,7 +29,7 @@ const removeFromCart = () => {
 <template>
 	<button class="button-store" @click="addToCart" v-if="!isInCart" style="background-color: #EA0029">
 		<div  v-if="media.price > 0">
-			{{ media.price }} CHF Panier
+			{{ media.price / 100 }} CHF Panier
 		</div>
 		<div v-else>
 			Gratuit

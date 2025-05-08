@@ -32,7 +32,7 @@ const descriptionLimit = 50;
 			<div class="video-info">
 				<h2 class="video-title">{{ truncate(media.name, titleLimit) }}</h2>
 				<p class="video-description">{{ truncate(media.description, descriptionLimit) }}</p>
-				<p v-if="media.price > 0" class="video-price">{{ media.price }} CHF</p>
+				<p v-if="media.price > 0" class="video-price">{{ media.price / 100 }} CHF</p>
 				<p v-else class="video-price">Gratuit</p>
 				<TagList :tags="media.tags" :tagsLimit="tagsLimit" />
 			</div>
