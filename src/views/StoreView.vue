@@ -11,7 +11,7 @@ const medias = ref([]);
 		<h1 class="store-title">Magasin</h1>
 		<Search @update:medias="medias = $event" />
 		<div>
-			<MediaList :medias="medias" />
+			<MediaList :medias="medias" :itemsType="'store'" />
 		</div>
 	</div>
 </template>

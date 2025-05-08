@@ -3,33 +3,22 @@ import {ref, onMounted} from "vue";
 import MediaPreview from "@/components/MediaPreview.vue";
 import Media from "@/libs/Media.js";
 import {useRoute} from "vue-router";
-let storeId =  useRoute().params.id;
+import Api from "@/services/ApiService.js";
+import ApiService from "@/services/ApiService.js";
+let mediaId =  useRoute().params.id;
 
 const media = ref(null);
 
 // Get the media data from the API
-const loadMedia = () => {
+const loadMedia = async () => {
 	//TODO: remove this and replace with API call
 	//TODO: check if media is already bought by the user
-	return new Media(
-			storeId,
-			"Video demo",
-			"Ceci est la description de la vidéo de demonstration",
-			10.95,
-			"https://mfc.koppa.pro/img/hero/hero-1.jpg",
-			[
-				"2025",
-				"test",
-				"test différent",
-				"2022",
-				"2023",
-			]
-	);
+	return await ApiService.getMedia(mediaId);
 }
 
 // Load media when the component is mounted
-onMounted(() => {
-	media.value = loadMedia();
+onMounted(async () => {
+	media.value = await loadMedia();
 });
 </script>
 

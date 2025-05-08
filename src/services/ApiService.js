@@ -1,3 +1,5 @@
+import Media from "@/libs/Media.js";
+
 export default class ApiService {
 	
 	static async login(email, password) {
@@ -9,8 +11,46 @@ export default class ApiService {
 			},
 			body: {email, password},
 		};
-		const data = await ApiService.fetchData(url, options);
-		return data;
+		return await ApiService.fetchData(url, options);
+	}
+	
+	static async searchMedias(params) {
+		const url = `/v1/media/search`;
+		const options = {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: params
+		};
+		let response = await ApiService.fetchData(url, options);
+		response = response.medias.map(media => Object.assign(new Media(), media));
+		return response;
+	}
+	
+	static async getMedia(id) {
+		const url = `/v1/media/${id}`;
+		const options = {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		};
+		let response = await ApiService.fetchData(url, options);
+		response = Object.assign(new Media(), response);
+		return response;
+	}
+	
+	static async playMedia(id) {
+		const url = `/v1/media/${id}/play`;
+		const options = {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		};
+		let response = await ApiService.fetchData(url, options);
+		return response.url;
 	}
 	
 	/**
@@ -27,6 +67,7 @@ export default class ApiService {
 			method,
 			headers: {
 				'Content-Type': 'application/json',
+				'Authorization': localStorage.getItem('jwtToken') ? `Bearer ${localStorage.getItem('jwtToken')}` : '',
 				...headers,
 			},
 		};

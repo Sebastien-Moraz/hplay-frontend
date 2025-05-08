@@ -1,17 +1,17 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import Media from "@/libs/Media.js";
+import ApiService from "@/services/ApiService.js";
 
-const emit = defineEmits(["update:medias"]); // Déclare l'événement
+const emit = defineEmits(["update:medias"]);
 
 const searchQuery = ref('');
 const selectedTags = ref([]);
 const tags = ref([]);
 const isLoading = ref(false);
 
-defineProps({
-	isPosed: {
-		type: Boolean,
+const props = defineProps({
+	userId: {
+		type: Number,
 		default: false,
 	},
 });
@@ -28,27 +28,19 @@ const fetchMedias = async () => {
 	isLoading.value = true;
 	
 	//TODO: implement API call and use isPosed to filter the results
-	let tmp = [];
-	
-	for (let i = 0; i < 20; i++) {
-		let media = new Media(
-				i,
-				"Video demo",
-				"Ceci est la description de la vidéo de demonstration",
-				10.95,
-				"https://mfc.koppa.pro/img/hero/hero-1.jpg",
-				["2025", "test", "demo", "2022", "2023"]
-		);
-		tmp.push(media);
+	let params = {
+		name: searchQuery.value,
+		limit: 20,
+	};
+	if (props.userId) {
+		params.userId = parseInt(props.userId);
 	}
-	
-	//TODO: remove this after implementing the API
-	await new Promise((resolve) => setTimeout(resolve, 1000));
+	const response = await ApiService.searchMedias(params);
 	
 	// mask loading message
 	isLoading.value = false;
 	
-	return tmp;
+	return response;
 };
 
 // Filter medias based on search query and selected tags
@@ -64,8 +56,8 @@ const toggleTag = (tag) => {
 
 // Update the list of medias based on the search query and selected tags
 const emitMedia = async () => {
-	const medias = await fetchMedias();
-	emit("update:medias", medias); // Utilisation de emit
+	const response = await fetchMedias();
+	emit("update:medias", response); // Utilisation de emit
 };
 
 // Handle search input
