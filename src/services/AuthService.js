@@ -1,5 +1,6 @@
 import User from "@/libs/User.js";
 import { isLoggedIn } from "@/stores/auth.js";
+import ApiService from "@/services/ApiService.js";
 export default class AuthService {
 
 	/**
@@ -31,14 +32,9 @@ export default class AuthService {
 	 */
 	static async login(email, password) {
 		//TODO: implement login logic with API
-		localStorage.setItem('jwtToken', email);
-		localStorage.setItem('user', JSON.stringify(new User(
-				1,
-				'John',
-				'Doe',
-				email,
-				true
-		)));
+		const data = await ApiService.login(email, password);
+		localStorage.setItem('jwtToken', data.jwtToken.token);
+		localStorage.setItem('user', JSON.stringify(data.user));
 		isLoggedIn.value = true;
 	}
 	
