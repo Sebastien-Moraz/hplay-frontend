@@ -1,6 +1,7 @@
 import User from "@/libs/User.js";
 import { isLoggedIn } from "@/stores/auth.js";
 import ApiService from "@/services/ApiService.js";
+import {sha256} from "js-sha256";
 export default class AuthService {
 
 	/**
@@ -13,6 +14,8 @@ export default class AuthService {
 	 */
 	static async register(firstName, lastName, email, password) {
 		//TODO: implement registration logic with API
+		const hashPassword = await AuthService.encryptPassword(password);
+		const response = await ApiService.register(firstName, lastName, email, hashPassword);
 		localStorage.setItem('jwtToken', email);
 		localStorage.setItem('user', JSON.stringify(new User(
 				1,
@@ -32,7 +35,9 @@ export default class AuthService {
 	 */
 	static async login(email, password) {
 		//TODO: implement login logic with API
-		const data = await ApiService.login(email, password);
+		const hashPassword = await AuthService.encryptPassword(password);
+		console.log(hashPassword);
+		const data = await ApiService.login(email, hashPassword);
 		localStorage.setItem('jwtToken', data.jwtToken.token);
 		localStorage.setItem('user', JSON.stringify(data.user));
 		isLoggedIn.value = true;
@@ -78,5 +83,9 @@ export default class AuthService {
 		//TODO: this force the navbar to re-render, but it should be done in a better way
 		isLoggedIn.value = false;
 		isLoggedIn.value = true;
+	}
+	
+	static async encryptPassword(password) {
+		return sha256(password);
 	}
 }

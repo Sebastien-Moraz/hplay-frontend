@@ -13,6 +13,18 @@ export default class ApiService {
 		};
 		return await ApiService.fetchData(url, options);
 	}
+
+	static async register(firstName, lastName, email, password) {
+		const url = `/v1/user/register`;
+		const options = {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: {firstName, lastName, email, password},
+		};
+		return await ApiService.fetchData(url, options);
+	}
 	
 	static async searchMedias(params) {
 		const url = `/v1/media/search`;
