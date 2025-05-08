@@ -18,7 +18,8 @@ const props = defineProps({
 
 // Fetch tags from the API
 const fetchTags = async () => {
-	tags.value = ["2025", "test", "test différent", "2022", "2023"];
+	let response = await ApiService.getAllTags();
+	tags.value = response.map((tag) => tag.name);
 	tags.value.sort((a, b) => a.localeCompare(b));
 };
 
@@ -27,11 +28,13 @@ const fetchMedias = async () => {
 	// display loading message
 	isLoading.value = true;
 	
-	//TODO: implement API call and use isPosed to filter the results
 	let params = {
 		name: searchQuery.value,
 		limit: 20,
 	};
+	if (selectedTags.value.length > 0) {
+		params.tags = selectedTags.value;
+	}
 	if (props.userId) {
 		params.userId = parseInt(props.userId);
 	}

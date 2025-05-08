@@ -65,6 +65,17 @@ export default class ApiService {
 		return response.url;
 	}
 	
+	static async getAllTags() {
+		const url = `/v1/tag`;
+		const options = {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		};
+		return await ApiService.fetchData(url, options);
+	}
+	
 	/**
 	 * Fetch data from the API
 	 * @param endpoint {string} - The API endpoint to fetch data from
