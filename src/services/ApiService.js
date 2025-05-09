@@ -26,6 +26,18 @@ export default class ApiService {
 		return await ApiService.fetchData(url, options);
 	}
 	
+	static async updateUser(user) {
+		const url = `/v1/user/${user.id}`;
+		const options = {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: user,
+		};
+		return await ApiService.fetchData(url, options);
+	}
+	
 	static async searchMedias(params) {
 		const url = `/v1/media/search`;
 		const options = {
