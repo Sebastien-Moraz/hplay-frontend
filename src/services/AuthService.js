@@ -1,7 +1,8 @@
 import User from "@/libs/User.js";
-import { isLoggedIn } from "@/stores/auth.js";
+import {isLoggedIn} from "@/stores/auth.js";
 import ApiService from "@/services/ApiService.js";
 import {sha256} from "js-sha256";
+
 export default class AuthService {
 
 	/**
@@ -79,6 +80,10 @@ export default class AuthService {
 
 	static async updateUser(user, password = null) {
 		//TODO: implement update user logic with API
+		if (password) {
+			user.password = await AuthService.encryptPassword(password);
+		}
+		const response = await ApiService.updateUser(user);
 		localStorage.setItem('user', JSON.stringify(user));
 		//TODO: this force the navbar to re-render, but it should be done in a better way
 		isLoggedIn.value = false;
