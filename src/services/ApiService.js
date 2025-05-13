@@ -88,6 +88,18 @@ export default class ApiService {
 		return await ApiService.fetchData(url, options);
 	}
 	
+	static async getPaymentUrl(params) {
+		const url = `/v1/payment`;
+		const options = {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: params
+		};
+		return (await ApiService.fetchData(url, options)).url;
+	}
+	
 	/**
 	 * Fetch data from the API
 	 * @param endpoint {string} - The API endpoint to fetch data from

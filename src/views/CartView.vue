@@ -28,8 +28,7 @@ const handleItemRemoved = (id) => {
 
 // Proceed to checkout
 const checkout = () => {
-	//TODO: Implement checkout logic and remove alert
-	alert('Procéder au paiement');
+	CartService.checkout();
 };
 
 // Load cart items when the component is mounted

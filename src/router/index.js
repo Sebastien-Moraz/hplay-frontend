@@ -8,6 +8,7 @@ import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import MyMediaView from '../views/MyMediaView.vue'
+import PaymentView from "@/views/PaymentView.vue";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -82,6 +83,14 @@ const router = createRouter({
 			path: '/my-media',
 			name: 'my-media',
 			component: MyMediaView,
+			meta: {
+				requiredAuth: true,
+			},
+		},
+		{
+			path: '/payment',
+			name: 'payment',
+			component: PaymentView,
 			meta: {
 				requiredAuth: true,
 			},

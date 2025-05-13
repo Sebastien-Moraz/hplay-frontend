@@ -1,3 +1,5 @@
+import ApiService from "@/services/ApiService.js";
+
 /**
  * CartService class to manage the shopping cart
  */
@@ -58,5 +60,14 @@ export default class CartService {
 	static clearCart() {
 		localStorage.removeItem(this.KEY);
 		return [];
+	}
+	
+	static async checkout() {
+		const cart = this.getCart();
+		const body = {
+			medias: cart.map(media => media.id),
+			redirectUrl: window.location.origin + "/payment",
+		};
+		window.location = await ApiService.getPaymentUrl(body);
 	}
 }
