@@ -1,5 +1,11 @@
 <script setup>
+import CartService from "@/services/CartService.js";
+
 let urlParams = new URLSearchParams(window.location.search);
+
+if (urlParams.get('status') === 'success') {
+	CartService.clearCart();
+}
 </script>
 
 <template>
