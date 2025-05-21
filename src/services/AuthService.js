@@ -67,7 +67,19 @@ export default class AuthService {
 	 * @returns {Promise<boolean>} - True if the user is logged in, false otherwise
 	 */
 	static async isLoggedIn() {
-		throw new Error('Method not implemented.');
+		const token = localStorage.getItem('jwtToken');
+		if (!token) {
+			await this.logout();
+			return false;
+		}
+		try {
+			return await ApiService.verifyToken(token);
+		} catch (error) {
+			await this.logout();
+			return false;
+		}
+			
+		
 	}
 	
 	/**

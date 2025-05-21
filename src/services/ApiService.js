@@ -38,6 +38,17 @@ export default class ApiService {
 		return await ApiService.fetchData(url, options);
 	}
 	
+	static async verifyToken() {
+		const url = `/v1/user/verify-token`;
+		const options = {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		};
+		return await ApiService.fetchData(url, options);
+	}
+	
 	static async searchMedias(params) {
 		const url = `/v1/media/search`;
 		const options = {
